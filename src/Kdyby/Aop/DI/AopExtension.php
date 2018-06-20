@@ -123,7 +123,7 @@ class AopExtension extends Nette\DI\CompilerExtension
 
 		$def = $this->getContainerBuilder()->getDefinition($serviceId);
 		if ($def->getFactory()) {
-			$def->setFactory(new Nette\DI\Statement($cg->getName() . '\\' . $advisedClass->getName()));
+			$def->setFactory(new Nette\DI\Statement($cg->getName() . '\\' . $advisedClass->getName(), $def->getFactory()->arguments));
 
 		} else {
 			$def->setFactory($cg->getName() . '\\' . $advisedClass->getName());
